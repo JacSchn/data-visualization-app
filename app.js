@@ -12,7 +12,11 @@ app.get('/', (req, res) => {
 });
 
 app.post('/setData', (req, res) => {
-  console.log(req.body.data);
+  try{
+    microData.setData(req.body.data);
+  } catch {
+    res.sendStatus(500);
+  }
   res.sendStatus(200);
 });
 
